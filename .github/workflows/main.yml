@@ -31,10 +31,10 @@ jobs:
         with:
           args: -v -tpng ${{ steps.getfile.outputs.files }}
       - name: Push Local Changes
-        uses:  stefanzweifel/git-auto-commit-action@v4.1.2
+        uses:  stefanzweifel/git-auto-commit-action@v4
         with:
           commit_user_name: "github-actions"
           commit_user_email: "oinume@gmail.com"
           commit_author: "GitHub Actions <oinume@gmail.com>"
           commit_message: "Generate SVG and PNG images for PlantUML diagrams"
-          branch: ${{ github.head_ref }}
+
