@@ -1,23 +1,23 @@
 name: Generate PlantUML Diagrams
 on:
   push:
-    paths:
-      - '**.puml'
+#    paths:
+#      - "**.puml"
     branches:
-      - master
+      - "*"
+      - "!master"
 jobs:
   ci:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     env:
       UML_FILES: ".puml"
     steps:
       - name: Checkout Source
-        uses: actions/checkout@v2
+        uses: actions/checkout@v1
       - name: Get changed UML files
         id: getfile
         run: |
           echo hello
-          echo $(git diff-tree -r --no-commit-id --name-only master)
           echo "::set-output name=files::$(git diff-tree -r --no-commit-id --name-only ${{ github.sha }} | grep ${{ env.UML_FILES }} | xargs)"
       - name: UML files considered echo output
         run: |
