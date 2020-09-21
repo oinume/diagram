@@ -1,14 +1,14 @@
 name: Generate PlantUML Diagrams
 on:
   push:
-#    paths:
-#      - "**.puml"
-    branches:
+    paths:
+      - "**.puml"
+    branches: # This branch configuration is for pull-request based workflow
       - "*"
       - "!master"
 jobs:
   ci:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     env:
       UML_FILES: ".puml"
     steps:
@@ -39,4 +39,3 @@ jobs:
           commit_user_email: "oinume@gmail.com"
           commit_author: "GitHub Actions <oinume@gmail.com>"
           commit_message: "Generate SVG and PNG images for PlantUML diagrams"
-
